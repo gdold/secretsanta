@@ -159,7 +159,7 @@ class Santa:
                 if self.check_list_valid(gifts):
                     self.list = gifts
                     return self.list
-            except RecursionError:
+            except RecursionError: # Invalid selection remaining, try again
                 continue
         raise ValueError('Unable to find valid combination after {:d} attempts. Decrease number of exclusions or increase max_num_attempts.'.format(self.max_num_attempts))
         
@@ -265,6 +265,8 @@ class Elves:
             for gift in self.gifts:
                 giver_email = gift.giver.contact
                 email_message = self.generate_email_message(gift.giver.name,gift.reciever.name)
+                # Cheap hack to add To: field to email, otherwise it arrives with no recipient as a bcc which can trip spam filters
+                email_message = "To: {giver_email}\n".format(giver_email=giver_email)+email_message
                 server.sendmail(email_address, giver_email, email_message)
         
         print('{:d} emails sent. Merry christmas!'.format(len(self.gifts)))
@@ -303,7 +305,7 @@ def main():
     persons = make_dict_of_persons(names,contacts,exclusions,exclude_both_ways = exclude_both_ways)
     santa = Santa(persons)
     
-    if type(seed) == int:
+    if seed:
         random.seed(seed)
     gifts = santa.make_a_list()
     
