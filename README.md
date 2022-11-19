@@ -8,4 +8,4 @@ The information is provided to [``secretsanta.py``](secretsanta.py) in the [``se
 ### Usage:
 Run ``python secretsanta.py`` in the terminal, which automatically imports data from [``secretsanta.yml``](secretsanta.yml). For examples of using this within a jupyter notebook, have a look at [``docs/secretsanta_example.ipynb``](docs/secretsanta_example.ipynb) or [``docs/secretsanta_yaml_example.ipynb``](docs/secretsanta_yaml_example.ipynb) for using information from a YAML file.
 
-If you're sending the emails from a Gmail account you will need to [enable access for less secure apps](https://myaccount.google.com/lesssecureapps) or the script will not be able to log in.
+If you're sending the emails from a Gmail account you will need to [generate a one-time-use app password](https://support.google.com/accounts/answer/185833) or the script will not be able to log in.
